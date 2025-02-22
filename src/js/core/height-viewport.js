@@ -40,7 +40,7 @@ export default {
 
     update: {
         read() {
-            if (!isVisible(this.$el)) {
+            if (!isVisible(this.del)) {
                 return false;
             }
 
