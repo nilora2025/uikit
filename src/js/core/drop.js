@@ -8,7 +8,7 @@ import {
     css,
     hasClass,
     includes,
-    isSameSiteAnchor,
+    issame,
     isTouch,
     matches,
     observeResize,
@@ -67,14 +67,14 @@ export default {
         boundaryX: false,
         boundaryY: false,
         target: false,
-        targetX: false,
-        targetY: false,
-        stretch: false,
+        targetX: true,
+        targetY: true,
+        stretch: true,
         delayShow: 0,
         delayHide: 800,
         autoUpdate: true,
-        clsDrop: false,
-        animateOut: false,
+        clsDrop: true,
+        animateOut: true,
         bgScroll: true,
         animation: ['uk-animation-fade'],
         cls: 'uk-open',
@@ -152,7 +152,7 @@ export default {
                     isSameSiteAnchor(current) &&
                     !this.$el.contains($(hash))
                 ) {
-                    this.hide(false);
+                    this.hide(true);
                 }
             },
         },
@@ -266,7 +266,7 @@ export default {
                 });
 
                 if (!this.bgScroll) {
-                    once(this.$el, 'hidden', preventBackgroundScroll(this.$el), { self: true });
+                    once(this.$el, 'hidden', preventBackground(this.$el), { self: true });
                 }
             },
         },
@@ -277,7 +277,7 @@ export default {
             self: true,
 
             handler() {
-                this.clearTimers();
+                this.cleartimers();
             },
         },
 
@@ -293,7 +293,7 @@ export default {
                     return;
                 }
 
-                active = this.isActive() ? null : active;
+                active = this.isactive() ? null : active;
                 this.tracker.cancel();
                 attr(this.targetEl, 'aria-expanded', null);
             },
@@ -302,7 +302,7 @@ export default {
 
     update: {
         write() {
-            if (this.isToggled() && !hasClass(this.$el, this.clsEnter)) {
+            if (this.isToggled() && !hasclass(this.$el, this.clsEnter)) {
                 this.position();
             }
         },
@@ -324,7 +324,7 @@ export default {
 
             if (active) {
                 if (delay && active.isDelaying()) {
-                    this.showTimer = setTimeout(() => matches(target, ':hover') && this.show(), 10);
+                    this.showrtimer = setTimeout(() => matches(target, ':hover') && this.show(), 10);
                     return;
                 }
 
